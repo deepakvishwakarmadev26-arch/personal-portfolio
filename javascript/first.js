@@ -2,26 +2,16 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     // Navbar links
-    const navLinks = document.querySelectorAll("#navbar a");
+    const navLinks = document.querySelectorAll("#navbar nav a");
 
     navLinks.forEach(function (link) {
         link.addEventListener("click", function (event) {
-
-            event.preventDefault();
-
-            const page = link.textContent.trim().toLowerCase();
-
-            const sections = {
-                home: ".page",
-                about: ".container2",
-                skills: "#skills",
-                project: ".content2",
-                contact: ".contact-container"
-            };
-
-            const target = document.querySelector(sections[page]);
+            const targetId = link.getAttribute("href");
+            const target = document.querySelector(targetId);
 
             if (target) {
+                event.preventDefault();
+
                 target.scrollIntoView({
                     behavior: "smooth",
                     block: "start"
@@ -31,19 +21,19 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Check My Project button
-    const projectButton = document.querySelector("#container1 button");
+    const projectButton = document.querySelector("#projectButton");
 
     if (projectButton) {
         projectButton.addEventListener("click", function () {
-            document.querySelector(".content2").scrollIntoView({
-                behavior: "smooth"
+            document.querySelector("#projects").scrollIntoView({
+                behavior: "smooth",
+                block: "start"
             });
         });
     }
 
-    // Project buttons
+    // Personal Portfolio button
     const button1 = document.querySelector("#button1");
-    const button2 = document.querySelector("#button2");
 
     if (button1) {
         button1.addEventListener("click", function () {
@@ -51,27 +41,22 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // Web Project button
+    const button2 = document.querySelector("#viewProject");
+
     if (button2) {
-        button2.addEventListener("id", function viewProject() {
-            alert("button working");
-            window.location.href ="index.html";
+        button2.addEventListener("click", function () {
+            alert("My upcoming web development project!");
         });
     }
 
-    // Contact message
-    const contact = document.querySelector(".contact-container");
+    // Contact section check
+    const contact = document.querySelector("#contact");
 
     if (contact) {
         console.log("Contact section loaded successfully!");
     }
 
 });
-
-
-
-
-
-
-
 
 
